@@ -20,7 +20,8 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QHBoxLayout,
     QSizePolicy, QSpacerItem, QTabWidget, QVBoxLayout,
     QWidget)
 import resources_rc
-import resources_rc
+
+from clipboard_text_on_click import ClipboardPasteLineEdit 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -137,7 +138,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.label_4)
 
-        self.lineEdit_3 = QLineEdit(self.widget_2)
+        self.lineEdit_3 = ClipboardPasteLineEdit(self.widget_2)
         self.lineEdit_3.setObjectName(u"lineEdit_3")
         self.lineEdit_3.setStyleSheet(u"QLineEdit{\n"
 "	background :#363b3c;\n"
@@ -196,7 +197,7 @@ class Ui_MainWindow(object):
 "\n"
 "")
         icon = QIcon()
-        icon.addFile(u":/fea/feather/download-cloud.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/f/resources/feather/download.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         self.pushButton_9.setIcon(icon)
         self.pushButton_9.setIconSize(QSize(36, 36))
 
@@ -258,7 +259,7 @@ class Ui_MainWindow(object):
 "QCheckBox::indicator:checked {\n"
 "    background-color: rgb(39, 141, 220); /* Checked background color */\n"
 "    border: 2px solid rgb(39, 141, 220);/*Checked border color*/\n"
-"    image: url(:/fea/feather/check-circle.svg); /* Replace with your checkmark icon */\n"
+"    image: url(:/f/resources/feather/check-circle.svg); /* Replace with your checkmark icon */\n"
 "    image-position: center; /* Center the checkmark */\n"
 "}\n"
 "\n"
@@ -268,7 +269,8 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox:focus {\n"
 "    outline: none; /* Remove default focus outline */\n"
-"}")
+""
+                        "}")
         self.checkBox.setIconSize(QSize(36, 36))
         self.checkBox.setChecked(False)
 
@@ -494,7 +496,7 @@ class Ui_MainWindow(object):
 "    border-color: #0078d4; /* Or your primary color */\n"
 "    outline: none; /* Remove default focus outline */\n"
 "    box-shadow: 0 0 3px rgba(0, 120, 212, 0.5); /* Optional subtle glow */\n"
-"}\n"
+"} \n"
 "\n"
 "QComboBox::drop-down {\n"
 "    subcontrol-origin: padding;\n"
@@ -514,8 +516,8 @@ class Ui_MainWindow(object):
 "    border-radius: 4px;\n"
 "    background-color: white;\n"
 "    selection-background-color: #e0e0e0; /* Selected item background */\n"
-"    selection-color: bla"
-                        "ck;\n"
+"    selection-color: bl"
+                        "ack;\n"
 "    outline: 0px;\n"
 "}\n"
 "\n"
@@ -525,6 +527,8 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "}\n"
+"\n"
+"\n"
 "")
 
         self.horizontalLayout_7.addWidget(self.quality_comboBox)
@@ -554,7 +558,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.SettingsTabWidget.setCurrentIndex(1)
+        self.SettingsTabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -575,16 +579,16 @@ class Ui_MainWindow(object):
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"download path", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"./downloads/", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"preferred quality  ( or less )", None))
-        self.quality_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"144", None))
-        self.quality_comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"360", None))
-        self.quality_comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"480", None))
-        self.quality_comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"520", None))
-        self.quality_comboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"560", None))
-        self.quality_comboBox.setItemText(5, QCoreApplication.translate("MainWindow", u"720", None))
-        self.quality_comboBox.setItemText(6, QCoreApplication.translate("MainWindow", u"1080", None))
-        self.quality_comboBox.setItemText(7, QCoreApplication.translate("MainWindow", u"1440", None))
-        self.quality_comboBox.setItemText(8, QCoreApplication.translate("MainWindow", u"2560", None))
-        self.quality_comboBox.setItemText(9, QCoreApplication.translate("MainWindow", u"best quality", None))
+        self.quality_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"best quality", None))
+        self.quality_comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"audio only", None))
+        self.quality_comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"144", None))
+        self.quality_comboBox.setItemText(3, QCoreApplication.translate("MainWindow", u"360", None))
+        self.quality_comboBox.setItemText(4, QCoreApplication.translate("MainWindow", u"480", None))
+        self.quality_comboBox.setItemText(5, QCoreApplication.translate("MainWindow", u"560", None))
+        self.quality_comboBox.setItemText(6, QCoreApplication.translate("MainWindow", u"720", None))
+        self.quality_comboBox.setItemText(7, QCoreApplication.translate("MainWindow", u"1080", None))
+        self.quality_comboBox.setItemText(8, QCoreApplication.translate("MainWindow", u"1440", None))
+        self.quality_comboBox.setItemText(9, QCoreApplication.translate("MainWindow", u"2560", None))
 
         self.SettingsTabWidget.setTabText(self.SettingsTabWidget.indexOf(self.settings_tab), QCoreApplication.translate("MainWindow", u"settings", None))
     # retranslateUi

@@ -124,7 +124,7 @@ QTabBar::tab:hover { /* Style tabs on hover */
           <enum>QTabWidget::TabShape::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <property name="elideMode">
           <enum>Qt::TextElideMode::ElideLeft</enum>
@@ -280,8 +280,8 @@ background :#102060;
                    <string/>
                   </property>
                   <property name="icon">
-                   <iconset resource="../downloader/resources/resources.qrc">
-                    <normaloff>:/fea/feather/download-cloud.svg</normaloff>:/fea/feather/download-cloud.svg</iconset>
+                   <iconset resource="resources.qrc">
+                    <normaloff>:/f/resources/feather/download.svg</normaloff>:/f/resources/feather/download.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -388,7 +388,7 @@ QCheckBox::indicator {
 QCheckBox::indicator:checked {
     background-color: rgb(39, 141, 220); /* Checked background color */
     border: 2px solid rgb(39, 141, 220);/*Checked border color*/
-    image: url(:/fea/feather/check-circle.svg); /* Replace with your checkmark icon */
+    image: url(:/f/resources/feather/check-circle.svg); /* Replace with your checkmark icon */
     image-position: center; /* Center the checkmark */
 }
 
@@ -775,7 +775,7 @@ QComboBox:focus {
     border-color: #0078d4; /* Or your primary color */
     outline: none; /* Remove default focus outline */
     box-shadow: 0 0 3px rgba(0, 120, 212, 0.5); /* Optional subtle glow */
-}
+} 
 
 QComboBox::drop-down {
     subcontrol-origin: padding;
@@ -805,8 +805,20 @@ QComboBox QAbstractItemView::item {
 
 
 }
+
+
 </string>
                   </property>
+                  <item>
+                   <property name="text">
+                    <string>best quality</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>audio only</string>
+                   </property>
+                  </item>
                   <item>
                    <property name="text">
                     <string>144</string>
@@ -820,11 +832,6 @@ QComboBox QAbstractItemView::item {
                   <item>
                    <property name="text">
                     <string>480</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>520</string>
                    </property>
                   </item>
                   <item>
@@ -850,11 +857,6 @@ QComboBox QAbstractItemView::item {
                   <item>
                    <property name="text">
                     <string>2560</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>best quality</string>
                    </property>
                   </item>
                  </widget>
@@ -902,7 +904,7 @@ QComboBox QAbstractItemView::item {
  </widget>
  <resources>
   <include location="../downloader/resources/resources.qrc"/>
-  <include location="../downloader/resources/resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections/>
 </ui>
