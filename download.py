@@ -13,10 +13,14 @@ def Download(urls ,path , is_it_playlist=False ,quality = 1080 ):
     
 
     if playlist :
-        playlist_to_download = urls
+        playlist_to_download = []+urls
     else:
+        # urls = urls.split("\n").split(",").split(" ").strip()  #! split by new line and space
+        # urls = [url for url in urls if url != ""]  #! remove empty strings
 
         videos_to_download =[]+urls
+
+
 
     #? now check the quality
     if quality == "best quality":
@@ -116,14 +120,15 @@ def Download(urls ,path , is_it_playlist=False ,quality = 1080 ):
         }
 
     try:
-        if playlist:
-            with YoutubeDL(ydl_opts) as ydl:
-                ydl.download([playlist_to_download])
-        else:
-            with YoutubeDL(ydl_opts) as ydl:
+        with YoutubeDL(ydl_opts) as ydl:
+
+            if playlist:
+                ydl.download(playlist_to_download)
+            else:
                 ydl.download(videos_to_download)
             
             return 1  #! downloaded
+
 
     except Exception as e:
         print(f"Error downloading: {str(e)}")

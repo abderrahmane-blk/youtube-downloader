@@ -1,13 +1,16 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget ,QFileDialog
 from PySide6.QtGui import QIcon
-from PySide6.QtCore import QSettings
+from PySide6.QtCore import QSettings ,QThreadPool
 
 
 # ! the resources.py
 import resources_rc
 import p1
 import download
+
+from threads import Worker, WorkerSignals ,Wait_Thread
+
 
 from pathlib import Path
 
@@ -27,6 +30,8 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
         self.pushButton_9.clicked.connect(self.button_clicked)
         self.pushButton_9.clicked.connect(self.download_video)
 
+        self.threadpool = QThreadPool()
+        self.downloading_workers = []
 
 
 
@@ -67,12 +72,26 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
         if self.checkBox.isChecked():
             try:
                 self.label_7.setText("Downloading...")
-                complete = download.Download(url ,thePath, True,quality_to_download)
+
+
+                # !the thread which will download
+                download_worker = Worker( download.Download, url ,thePath, True ,quality_to_download)
+                self.downloading_workers.append(download_worker)
+
+                download_worker.signals.progress.connect(self.download_progress)
+                download_worker.signals.result.connect(self.download_complete)
+                download_worker.signals.error.connect(self.download_error)
+                download_worker.signals.finished.connect(self.download_finished)
+                self.threadpool.start(download_worker)
+
+
+                # complete = download.Download(url ,thePath, True,quality_to_download) #? the old way
 
             except:
                 print("error downloading1")
             finally:
-                self.label_7.setText("...")
+                # self.label_7.setText("...")
+                pass
 
 
 
@@ -81,7 +100,22 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
         else: #if not a playlist
             try:
                 self.label_7.setText("Downloading...")
-                complete = download.Download(url ,thePath, False ,quality_to_download) 
+
+
+
+
+                # !the thread which will download
+                download_worker = Worker( download.Download, url ,thePath, False ,quality_to_download)
+                self.downloading_workers.append(download_worker)
+
+                download_worker.signals.progress.connect(self.download_progress)
+                download_worker.signals.result.connect(self.download_complete)
+                download_worker.signals.error.connect(self.download_error)
+                download_worker.signals.finished.connect(self.download_finished)
+                self.threadpool.start(download_worker)
+
+
+                # complete = download.Download(url ,thePath, False ,quality_to_download) 
                 
 
 
@@ -120,14 +154,51 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
             except:
                 print("error downloading")
             finally:
-                self.label_7.setText("...")
+                # self.label_7.setText("...")
+                pass
 
-        if compelete:
-            self.label_3.setText("Downloaded")
-            self.label_7.setText("no")
-        else:
-            self.label_3.setText("an error occured : not downloaded")
-            self.label_7.setText("no")
+        # if compelete:
+        #     self.label_3.setText("Downloaded")
+        #     self.label_7.setText("no")
+        # else:
+        #     self.label_3.setText("an error occured : not downloaded")
+        #     self.label_7.setText("no")
+
+
+
+
+
+
+#  ! ------------these 4 methods are for the download thread----------------
+    def download_progress(self):
+        print("progress")
+        pass
+
+    def download_complete(self):
+        print("complete")
+        pass
+            # self.label_3.setText("Downloaded")
+            # self.label_7.setText("no")
+    def download_error(self):
+        print("error")
+        pass
+        self.label_3.setText(" no ")
+        self.label_3.setText("an error occured  , not downloaded")
+
+    def set_download_label(self):
+        self.label_7.setText("...")
+        self.label_3.setText("...")
+
+    def download_finished(self):
+        self.label_3.setText("downloaded")
+        self.wait_thread = Wait_Thread()
+        self.wait_thread.done.connect(self.set_download_label)  #? just for 
+        self.wait_thread.start()
+        print("finished")
+        pass
+
+
+
 
 
 
