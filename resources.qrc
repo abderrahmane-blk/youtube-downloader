@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="f">
+    <file>resources/logo.png</file>
     <file>resources/feather/activity.svg</file>
     <file>resources/feather/airplay.svg</file>
     <file>resources/feather/alert-circle.svg</file>

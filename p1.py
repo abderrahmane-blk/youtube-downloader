@@ -19,9 +19,8 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QHBoxLayout,
     QLabel, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QSpacerItem, QTabWidget, QVBoxLayout,
     QWidget)
-import resources_rc
-
 from clipboard_text_on_click import ClipboardPasteLineEdit 
+import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -442,6 +441,38 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.lineEdit_4)
 
+        self.select_folder_button = QPushButton(self.widget_3)
+        self.select_folder_button.setObjectName(u"select_folder_button")
+        sizePolicy1.setHeightForWidth(self.select_folder_button.sizePolicy().hasHeightForWidth())
+        self.select_folder_button.setSizePolicy(sizePolicy1)
+        self.select_folder_button.setMinimumSize(QSize(60, 60))
+        self.select_folder_button.setStyleSheet(u"QPushButton{\n"
+"background :rgb(39, 141, 220);\n"
+"margin-left:10px;\n"
+"border-radius:3px;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:hover{\n"
+"background :#365270;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"background :#102060;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
+        icon1 = QIcon()
+        icon1.addFile(u":/f/resources/feather/folder.svg", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        self.select_folder_button.setIcon(icon1)
+        self.select_folder_button.setIconSize(QSize(36, 36))
+
+        self.horizontalLayout_8.addWidget(self.select_folder_button)
+
 
         self.verticalLayout.addWidget(self.widget_3)
 
@@ -571,13 +602,14 @@ class Ui_MainWindow(object):
         self.pushButton_9.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"is it a playlist ?", None))
         self.checkBox.setText(QCoreApplication.translate("MainWindow", u"yes", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"is it a downloading ?", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"is it downloading ?", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"no", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"is it complete", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"...", None))
         self.SettingsTabWidget.setTabText(self.SettingsTabWidget.indexOf(self.main), QCoreApplication.translate("MainWindow", u"download", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"download path", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"./downloads/", None))
+        self.select_folder_button.setText("")
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"preferred quality  ( or less )", None))
         self.quality_comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"best quality", None))
         self.quality_comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"audio only", None))

@@ -27,11 +27,23 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
 
         self.setWindowTitle("Downloader Y")
 
+        icon_path = Path( "resources","logo.png") #Replace your_icon.png
+        self.setWindowIcon(QIcon(str(icon_path.resolve()))) # Set the icon
+
+
+
+        # ! the buttons
+        self.select_folder_button.clicked.connect(self.open_folder)
+
+
+
         self.pushButton_9.clicked.connect(self.button_clicked)
         self.pushButton_9.clicked.connect(self.download_video)
 
         self.threadpool = QThreadPool()
         self.downloading_workers = []
+
+        self.waiting_threads = []
 
 
 
@@ -46,6 +58,31 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
 
     def button_clicked(self):
         print("Button clicked!")
+
+
+
+
+
+
+
+    def open_folder(self):
+        folder = QFileDialog.getExistingDirectory(self, "Select Folder")    
+        # self.select_folder_button.setText(folder)
+        self.lineEdit_4.setText(folder)
+        print(folder)
+
+
+
+
+
+
+
+
+
+
+
+
+# ! ---------------------------- the real download function ----------------------------------
 
     def download_video(self):
         url = []
@@ -169,7 +206,7 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
 
 
 
-#  ! ------------these 4 methods are for the download thread----------------
+#  ! ------------these 4 methods are for the download thread and a wait thread----------------
     def download_progress(self):
         print("progress")
         pass
@@ -179,6 +216,7 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
         pass
             # self.label_3.setText("Downloaded")
             # self.label_7.setText("no")
+    
     def download_error(self):
         print("error")
         pass
@@ -191,11 +229,15 @@ class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
 
     def download_finished(self):
         self.label_3.setText("downloaded")
-        self.wait_thread = Wait_Thread()
-        self.wait_thread.done.connect(self.set_download_label)  #? just for 
-        self.wait_thread.start()
-        print("finished")
-        pass
+        try:
+            self.wait_thread = Wait_Thread()
+            self.wait_thread.done.connect(self.set_download_label)  #? just for 
+            self.waiting_threads.append(self.wait_thread)
+            self.wait_thread.start()
+            print("finished")
+        except:
+            pass
+        
 
 
 

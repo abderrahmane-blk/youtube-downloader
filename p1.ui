@@ -481,7 +481,7 @@ QCheckBox:focus {
 }</string>
                   </property>
                   <property name="text">
-                   <string>is it a downloading ?</string>
+                   <string>is it downloading ?</string>
                   </property>
                   <property name="scaledContents">
                    <bool>true</bool>
@@ -705,6 +705,57 @@ QLineEdit::placeholder {
                 </property>
                 <property name="text">
                  <string>./downloads/</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="select_folder_button">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>60</width>
+                  <height>60</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+background :rgb(39, 141, 220);
+margin-left:10px;
+border-radius:3px;
+
+}
+
+
+QPushButton:hover{
+background :#365270;
+
+}
+
+QPushButton:pressed{
+background :#102060;
+
+}
+
+
+</string>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="resources.qrc">
+                  <normaloff>:/f/resources/feather/folder.svg</normaloff>:/f/resources/feather/folder.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>36</width>
+                  <height>36</height>
+                 </size>
                 </property>
                </widget>
               </item>

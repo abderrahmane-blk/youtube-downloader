@@ -57,7 +57,7 @@ def Download(urls ,path , is_it_playlist=False ,quality = 1080 ):
             'outtmpl': f'{path}/%(title)s  download_quality {quality}.%(ext)s',  # Output template
 
             # 'noplaylist': True,  # Only download single video, not playlist
-            'ignoreerrors': False,  # ! Skip errors
+            'ignoreerrors': True,  # ! Skip errors
             # 'nooverwrites': True,  # Don't overwrite existing files
 
             # 'postprocessors': [{
@@ -65,7 +65,7 @@ def Download(urls ,path , is_it_playlist=False ,quality = 1080 ):
             # 'preferedformat': 'mp4',  # Convert to MP4 format
             # }],
             # ? 'format_sort': ['res:2560','res:1440','res:1080', 'res:720', 'res:480', 'res:360', 'res:240'],
-            'verbose': True  ,# Show more debug info
+            'verbose': False  ,# Show more debug info
             'merge_output_format': 'mp4',  # Merge into MP4 format
     #         'postprocessors': [{
     #             'key': 'FFmpegVideoConvertor',  # Ensure FFmpeg is used for merging
