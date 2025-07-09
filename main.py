@@ -16,8 +16,27 @@ from pathlib import Path
 
 
 
+# ! the code which by windows defender does not halt the app
+import ctypes 
+
+# Admin check
+def is_admin():
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except:
+        return False
+
+if not is_admin():
+    # Re-run the script with admin rights
+    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    sys.exit()
 
 
+
+
+
+
+# ! the main window class
 
 class MainWindow(QMainWindow ,p1.Ui_MainWindow ):
     def __init__(self):
