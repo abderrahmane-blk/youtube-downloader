@@ -810,12 +810,14 @@ background :#102060;
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QComboBox {
+                   <string notr="true">
+      QComboBox {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
     font-size: 14px;
-    background-color: white;
+    background-color: #e0e0e0;
+    color: #000000;
 }
 
 QComboBox:hover {
@@ -823,9 +825,8 @@ QComboBox:hover {
 }
 
 QComboBox:focus {
-    border-color: #0078d4; /* Or your primary color */
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 3px rgba(0, 120, 212, 0.5); /* Optional subtle glow */
+    border-color: #0078d4;
+    outline: none;
 } 
 
 QComboBox::drop-down {
@@ -836,7 +837,7 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-    image: url(your_down_arrow_icon.png); /* Replace with your icon */
+    image: url(your_down_arrow_icon.png);
     width: 12px;
     height: 12px;
 }
@@ -844,19 +845,17 @@ QComboBox::down-arrow {
 QComboBox QAbstractItemView {
     border: 1px solid #ccc;
     border-radius: 4px;
-    background-color: white;
-    selection-background-color: #e0e0e0; /* Selected item background */
-    selection-color: black;
+    background-color: #ffffff;
+    selection-background-color: #0078d4;
+    selection-color: #ffffff;
     outline: 0px;
 }
 
 QComboBox QAbstractItemView::item {
     padding: 5px;
     min-height: 20px;
-
-
+    color: #000000;
 }
-
 
 </string>
                   </property>

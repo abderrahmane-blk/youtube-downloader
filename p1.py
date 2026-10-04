@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'p1.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.8.1
+## Created by: Qt User Interface Compiler version 6.11.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QHBoxLayout,
     QLabel, QLineEdit, QMainWindow, QPushButton,
     QSizePolicy, QSpacerItem, QTabWidget, QVBoxLayout,
     QWidget)
-from clipboard_text_on_click import ClipboardPasteLineEdit 
+import resources_rc
 import resources_rc
 
 class Ui_MainWindow(object):
@@ -137,7 +137,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.label_4)
 
-        self.lineEdit_3 = ClipboardPasteLineEdit(self.widget_2)
+        self.lineEdit_3 = QLineEdit(self.widget_2)
         self.lineEdit_3.setObjectName(u"lineEdit_3")
         self.lineEdit_3.setStyleSheet(u"QLineEdit{\n"
 "	background :#363b3c;\n"
@@ -511,12 +511,14 @@ class Ui_MainWindow(object):
         self.quality_comboBox.addItem("")
         self.quality_comboBox.setObjectName(u"quality_comboBox")
         self.quality_comboBox.setMaximumSize(QSize(300, 16777215))
-        self.quality_comboBox.setStyleSheet(u"QComboBox {\n"
+        self.quality_comboBox.setStyleSheet(u"\n"
+"      QComboBox {\n"
 "    border: 1px solid #ccc;\n"
 "    border-radius: 4px;\n"
 "    padding: 5px;\n"
 "    font-size: 14px;\n"
-"    background-color: white;\n"
+"    background-color: #e0e0e0;\n"
+"    color: #000000;\n"
 "}\n"
 "\n"
 "QComboBox:hover {\n"
@@ -524,9 +526,8 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox:focus {\n"
-"    border-color: #0078d4; /* Or your primary color */\n"
-"    outline: none; /* Remove default focus outline */\n"
-"    box-shadow: 0 0 3px rgba(0, 120, 212, 0.5); /* Optional subtle glow */\n"
+"    border-color: #0078d4;\n"
+"    outline: none;\n"
 "} \n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -537,7 +538,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(your_down_arrow_icon.png); /* Replace with your icon */\n"
+"    image: url(your_down_arrow_icon.png);\n"
 "    width: 12px;\n"
 "    height: 12px;\n"
 "}\n"
@@ -545,20 +546,17 @@ class Ui_MainWindow(object):
 "QComboBox QAbstractItemView {\n"
 "    border: 1px solid #ccc;\n"
 "    border-radius: 4px;\n"
-"    background-color: white;\n"
-"    selection-background-color: #e0e0e0; /* Selected item background */\n"
-"    selection-color: bl"
-                        "ack;\n"
+"    background-color: #ffffff;\n"
+"    selection-background-color: #0078d4;\n"
+"    selection-color: #ffffff;\n"
 "    outline: 0px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView::item {\n"
 "    padding: 5px;\n"
 "    min-height: 20px;\n"
-"\n"
-"\n"
+"    color: #000000;\n"
 "}\n"
-"\n"
 "\n"
 "")
 

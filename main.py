@@ -18,20 +18,38 @@ from pathlib import Path
 
 # ! the code which by windows defender does not halt the app
 import ctypes 
+import os
+import sys 
 
-# Admin check
+# well , that worked on windows , but it is commented to e replaced by cross platform code
+# # Admin check
+# def is_admin():
+#     try:
+#         return ctypes.windll.shell32.IsUserAnAdmin()
+#     except:
+#         return False
+
+# if not is_admin():
+#     # Re-run the script with admin rights
+#     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+#     sys.exit()
+
+
+# Admin check across platforms
 def is_admin():
     try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
+        if os.name == 'nt':
+            return ctypes.windll.shell32.IsUserAnAdmin()
+        else:
+            return os.geteuid() == 0
     except:
         return False
 
-if not is_admin():
-    # Re-run the script with admin rights
+# Admin elevation logic
+if os.name == 'nt' and not is_admin():
+    # Re-run the script with admin rights (Windows only)
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     sys.exit()
-
-
 
 
 
