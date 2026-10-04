@@ -7,21 +7,21 @@ cd youtube-downloader
 
 ### 2. Create the virtual environment
 
-##### on linux
+#### on linux
 
 python3 -m venv venv
 
-##### on windows
+#### on windows
 
 python -m venv venv
 
 ### 3. Activate the virtual environment
 
-##### on linux
+#### on linux
 
 source venv/bin/activate
 
-##### on windows
+#### on windows
 
 venv/scripts/activate
 
@@ -33,12 +33,12 @@ pip install yt-dlp pyside6
 
 python main.py
 
-# if the downloaded video is mute or is split from its sound into 2 files
+## if the downloaded video is mute or is split from its sound into 2 files
 
-then you just have to istall `ffmpeg` on your system
+then you just have to install `ffmpeg` on your system
 
-##### for linux
+#### for linux
 
 pip install ffmpeg
 
-##### it is not hard for windows , just look for it
+#### it is not hard for windows , just look for it
